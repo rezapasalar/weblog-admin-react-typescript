@@ -3,13 +3,13 @@ import { FC, ReactNode, useEffect, useRef } from 'react'
 interface Props {
     children: ReactNode,
     size?: string,
-    modalStatus: boolean,
+    isShowModal: boolean,
     cancelHandler: any,
     backdrop?: boolean,
     keyboard?: boolean
 }
 
-const MainModal: FC<Props> = ({size = 'md', children, modalStatus, cancelHandler, backdrop = false, keyboard = false}) => {
+const MainModal: FC<Props> = ({size = 'md', children, isShowModal, cancelHandler, backdrop = false, keyboard = false}) => {
 
     const modalRef = useRef<any>(null)
 
@@ -20,13 +20,15 @@ const MainModal: FC<Props> = ({size = 'md', children, modalStatus, cancelHandler
     }
 
     useEffect(() => {
-        if (modalStatus) {
+        if (isShowModal) {
             modalRef.current.scrollTo({top: 0})
-            document.querySelector<any>('body').classList.add('overflow-hidden')
-        } else {
-            document.querySelector<any>('body').classList.remove('overflow-hidden')
+            document.querySelector('body')?.classList.add('overflow-hidden')
         }
-    }, [modalStatus])
+
+        return () => {
+            document.querySelector('body')?.classList.remove('overflow-hidden')
+        }
+    }, [isShowModal])
 
     useEffect(() => {
         if (keyboard) {
@@ -40,7 +42,7 @@ const MainModal: FC<Props> = ({size = 'md', children, modalStatus, cancelHandler
     const backdropHandler: any = (e: any) => backdrop && (e.target.id === 'modalId' || e.target.id === 'contentId') && cancelHandler()
 
     return (
-        <div id="modalId" onClick={backdropHandler} ref={modalRef} className={`${modalStatus ? 'block' : 'hidden'} fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-[999] bg-gray-500/75`}>
+        <div id="modalId" onClick={backdropHandler} ref={modalRef} className={`${isShowModal ? 'block' : 'hidden'} fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-[999] bg-gray-500/75`}>
             <div id="contentId" className="flex justify-center pt-4 px-4 pb-20 text-center sm:block">
                 <div className={`${sizes[size]} relative inline-block align-bottom bg-white dark:bg-gray-700 rounded-lg text-right overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle w-full px-4 py-6 animate-modal`}>
                     {children}

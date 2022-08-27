@@ -9,6 +9,7 @@ export default interface User {
     code: string,
     mobile: string,
     email: string,
+    created_at: number
 }
 
 export interface UserFlex {
@@ -22,5 +23,6 @@ export interface UserFlex {
     mobile?: string,
     email: string,
     password?: string,
-    passwordConfirmation?: string
+    passwordConfirmation?: string,
+    created_at?: number | string
 }

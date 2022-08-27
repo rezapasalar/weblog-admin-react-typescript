@@ -1,4 +1,17 @@
-export const responses: any = {
+type ResponsesType = {
+    formError: string,
+    successfulOperation: string,
+    successfulRemoval: string,
+    emptyData: string,
+    axiosError: string,
+    recevingInfo: string,
+    noComment: string,
+    successfulLogin: string,
+    successfulLogout: string,
+    successfulSave: string,
+}
+
+export const responses: ResponsesType = {
     formError: 'خطاهای فرم را برطرف کنید',
     successfulOperation: 'عملیات با موفقیت انجام شد',
     successfulRemoval: 'حذف با موفقیت انجام شد',

@@ -1,7 +1,5 @@
-import Page from './page'
-import FullScreenCenter from './fullScreenCenter'
 import ColumnGrid from './columnGrid'
+import DataSet from './dataSet'
 
-export const PageWrap = Page
-export const FullScreenCenterWrap = FullScreenCenter
 export const ColumnGridWrap = ColumnGrid
+export const DataSetWrap = DataSet

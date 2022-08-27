@@ -1,4 +1,4 @@
-import { FC, ReactNode, memo } from 'react'
+import { FC, ReactNode } from 'react'
 
 interface Props {
     children: ReactNode,
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const ColumnGridWrap: FC<Props> = ({children, cols = '2', gap = '6', responsive = 'on' , className: classes = ''}) => {
-
+    
     const gridCols: any = {
         responsive : {
             1: 'md:grid-cols-1',
@@ -42,4 +42,4 @@ const ColumnGridWrap: FC<Props> = ({children, cols = '2', gap = '6', responsive 
     )
 }
 
-export default memo(ColumnGridWrap)
+export default ColumnGridWrap

@@ -8,7 +8,7 @@ interface Props {
     siblingCount?: number,
     currentPage: any,
     pageSize: number,
-    filter?: string
+    filter?: string | any
 }
 
 
